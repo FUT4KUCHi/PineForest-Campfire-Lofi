@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=4 uid="uid://hsnvev0ri0xr"]
 
-[ext_resource type="PackedScene" uid="uid://dafqmpxqax6ga" path="res://files/foliage.glb" id="1_saaqa"]
-[ext_resource type="Texture2D" uid="uid://dqe1maabft3ig" path="res://files/foliage_foliage.png" id="2_huwgr"]
+[ext_resource type="PackedScene" uid="uid://dafqmpxqax6ga" path="res://files/foliage.glb" id="1_c0xmn"]
+[ext_resource type="Texture2D" uid="uid://dqe1maabft3ig" path="res://files/foliage_foliage.png" id="2_ehkel"]
 
 [sub_resource type="Shader" id="Shader_b71ps"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.3.stable's StandardMaterial3D.
@@ -81,7 +81,7 @@ shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/texture_albedo = ExtResource("2_huwgr")
+shader_parameter/texture_albedo = ExtResource("2_ehkel")
 shader_parameter/wind_speed = 0.1
 shader_parameter/wind_strength = 0.2
 shader_parameter/noise_tex = SubResource("NoiseTexture2D_n5cje")
@@ -118,7 +118,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_12u67")
 
-[node name="foliage2" instance=ExtResource("1_saaqa")]
+[node name="foliage2" instance=ExtResource("1_c0xmn")]
 
 [node name="foliage" parent="." index="0"]
 mesh = SubResource("ArrayMesh_8ovgf")

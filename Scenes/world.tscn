@@ -1,13 +1,13 @@
 [gd_scene load_steps=15 format=3 uid="uid://4vgxbims16v6"]
 
 [ext_resource type="Texture2D" uid="uid://c6g072c0ef1xc" path="res://files/textures/sky.png" id="1_2rgvy"]
-[ext_resource type="PackedScene" uid="uid://dvyodnoqs625h" path="res://player.tscn" id="1_wxfb0"]
+[ext_resource type="PackedScene" uid="uid://dvyodnoqs625h" path="res://scenes/player.tscn" id="1_wxfb0"]
 [ext_resource type="Texture2D" uid="uid://d3w3ahcatt2l" path="res://files/textures/ground.png" id="2_xkdqr"]
-[ext_resource type="PackedScene" uid="uid://dob0cgdyfq2ll" path="res://Scenes/Player/sk_combined.tscn" id="3_a2eaw"]
+[ext_resource type="PackedScene" uid="uid://dob0cgdyfq2ll" path="res://scenes/Player/sk_combined.tscn" id="3_a2eaw"]
 [ext_resource type="Texture2D" uid="uid://dl6dgnq12degd" path="res://files/textures/ground_n.png" id="3_b1i0t"]
 [ext_resource type="MeshLibrary" uid="uid://bvd1hk2rl4nmd" path="res://mesh_lib/tree_mesh.tres" id="4_dvcyd"]
 [ext_resource type="MeshLibrary" uid="uid://cssf08tvc8if4" path="res://mesh_lib/foliage_mesh.tres" id="5_tm4tq"]
-[ext_resource type="PackedScene" uid="uid://ocas6v5rf0bx" path="res://campfire.tscn" id="6_o2l8q"]
+[ext_resource type="PackedScene" uid="uid://ocas6v5rf0bx" path="res://scenes/campfire.tscn" id="6_o2l8q"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_yfsfk"]
 panorama = ExtResource("1_2rgvy")

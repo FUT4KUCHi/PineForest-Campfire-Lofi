@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bj4u1j7fwkwfq"]
+
+[ext_resource type="Shader" path="res://shaders/vegetation_sway.gdshader" id="1_mpi1d"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_mpi1d")
+shader_parameter/albedo = null
+shader_parameter/point_size = null
+shader_parameter/roughness = null
+shader_parameter/metallic_texture_channel = null
+shader_parameter/specular = null
+shader_parameter/metallic = null
+shader_parameter/uv1_scale = null
+shader_parameter/uv1_offset = null
+shader_parameter/uv2_scale = null
+shader_parameter/uv2_offset = null
+shader_parameter/wind_speed = 0.1
+shader_parameter/wind_strength = 0.03

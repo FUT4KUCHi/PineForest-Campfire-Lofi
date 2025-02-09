@@ -1,14 +1,14 @@
 [gd_scene load_steps=12 format=4 uid="uid://dfw64ts0p4i6i"]
 
-[ext_resource type="PackedScene" uid="uid://bu4mn6x4m5lfa" path="res://files/tree.glb" id="1_0q3kb"]
-[ext_resource type="Texture2D" uid="uid://ds0cglggkd2v5" path="res://files/tree_bark.png" id="2_ucdrf"]
-[ext_resource type="Texture2D" uid="uid://bwn8jpb6hm6yw" path="res://files/tree_pine_needles.png" id="3_cga2w"]
+[ext_resource type="PackedScene" uid="uid://bu4mn6x4m5lfa" path="res://files/tree.glb" id="1_714er"]
+[ext_resource type="Texture2D" uid="uid://ds0cglggkd2v5" path="res://files/tree_bark.png" id="1_i7nn6"]
+[ext_resource type="Texture2D" uid="uid://bwn8jpb6hm6yw" path="res://files/tree_pine_needles.png" id="2_t7av0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tb101"]
 resource_name = "bark"
 transparency = 4
 cull_mode = 2
-albedo_texture = ExtResource("2_ucdrf")
+albedo_texture = ExtResource("1_i7nn6")
 texture_filter = 2
 
 [sub_resource type="Shader" id="Shader_bl3ya"]
@@ -91,7 +91,7 @@ shader_parameter/uv1_scale = Vector3(1, 1, 1)
 shader_parameter/uv1_offset = Vector3(0, 0, 0)
 shader_parameter/uv2_scale = Vector3(1, 1, 1)
 shader_parameter/uv2_offset = Vector3(0, 0, 0)
-shader_parameter/texture_albedo = ExtResource("3_cga2w")
+shader_parameter/texture_albedo = ExtResource("2_t7av0")
 shader_parameter/wind_speed = 0.1
 shader_parameter/wind_strength = 0.03
 shader_parameter/noise_tex = SubResource("NoiseTexture2D_rpe61")
@@ -153,7 +153,7 @@ shadow_mesh = SubResource("ArrayMesh_bdpxk")
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_v3ixw"]
 height = 4.0
 
-[node name="tree" instance=ExtResource("1_0q3kb")]
+[node name="tree" instance=ExtResource("1_714er")]
 
 [node name="Cone" parent="." index="0"]
 mesh = SubResource("ArrayMesh_fvahm")

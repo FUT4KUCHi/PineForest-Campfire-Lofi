@@ -6290,7 +6290,6 @@ animation = &"FP_idle_pose"
 animation = &"FP_reload"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ehqff"]
-graph_offset = Vector2(-565.211, 78.1382)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_die0r")
 nodes/Add2/position = Vector2(160, 80)
 "nodes/Add2 2/node" = SubResource("AnimationNodeAdd2_60nit")

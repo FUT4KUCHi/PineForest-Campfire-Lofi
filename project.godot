@@ -1,10 +1,18 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
 config_version=5
 
 [application]
 
 config/name="Pine Forest, Campfire, Lofi"
 config/tags=PackedStringArray("3d", "first_person")
-run/main_scene="res://world.tscn"
+run/main_scene="res://scenes/world.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/show_image=false
 config/icon="res://icon.svg"
