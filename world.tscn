@@ -1,0 +1,94 @@
+[gd_scene load_steps=15 format=3 uid="uid://4vgxbims16v6"]
+
+[ext_resource type="Texture2D" uid="uid://c6g072c0ef1xc" path="res://files/textures/sky.png" id="1_2rgvy"]
+[ext_resource type="PackedScene" uid="uid://dvyodnoqs625h" path="res://player.tscn" id="1_wxfb0"]
+[ext_resource type="Texture2D" uid="uid://d3w3ahcatt2l" path="res://files/textures/ground.png" id="2_xkdqr"]
+[ext_resource type="PackedScene" uid="uid://dob0cgdyfq2ll" path="res://Scenes/Player/sk_combined.tscn" id="3_a2eaw"]
+[ext_resource type="Texture2D" uid="uid://dl6dgnq12degd" path="res://files/textures/ground_n.png" id="3_b1i0t"]
+[ext_resource type="MeshLibrary" uid="uid://bvd1hk2rl4nmd" path="res://mesh_lib/tree_mesh.tres" id="4_dvcyd"]
+[ext_resource type="MeshLibrary" uid="uid://cssf08tvc8if4" path="res://mesh_lib/foliage_mesh.tres" id="5_tm4tq"]
+[ext_resource type="PackedScene" uid="uid://ocas6v5rf0bx" path="res://campfire.tscn" id="6_o2l8q"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_yfsfk"]
+panorama = ExtResource("1_2rgvy")
+
+[sub_resource type="Sky" id="Sky_uxq60"]
+sky_material = SubResource("PanoramaSkyMaterial_yfsfk")
+
+[sub_resource type="Environment" id="Environment_hp8ne"]
+background_mode = 2
+sky = SubResource("Sky_uxq60")
+tonemap_mode = 2
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.11779, 0.131943, 0.154193, 1)
+fog_sky_affect = 0.075
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8lks5"]
+albedo_texture = ExtResource("2_xkdqr")
+metallic_specular = 0.0
+normal_enabled = true
+normal_texture = ExtResource("3_b1i0t")
+uv1_scale = Vector3(25, 25, 25)
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mjlu8"]
+material = SubResource("StandardMaterial3D_8lks5")
+size = Vector2(100, 100)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_wfjj7"]
+data = PackedVector3Array(50, 0, 50, -50, 0, 50, 50, 0, -50, -50, 0, 50, -50, 0, -50, 50, 0, -50)
+
+[node name="World" type="Node"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_hp8ne")
+
+[node name="Player" parent="." instance=ExtResource("1_wxfb0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+
+[node name="head" type="Node3D" parent="Player"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 1.8, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player/head"]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Player/head/Camera3D"]
+visible = false
+light_energy = 1.5
+spot_range = 20.0
+spot_angle = 30.0
+
+[node name="SK_Combined" parent="Player/head" instance=ExtResource("3_a2eaw")]
+transform = Transform3D(-2, 0, 3.01992e-07, 0, 2, 0, -3.01992e-07, 0, -2, 0, 0, 0)
+visible = false
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_mjlu8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_wfjj7")
+
+[node name="Trees_GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("4_dvcyd")
+cell_size = Vector3(1, 2, 1)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(65525, 65528, 0, 2, 65523, 0, 65527, 10, 0, 65535, 24, 0, 4, 23, 0, 9, 21, 0, 14, 18, 0, 18, 14, 0, 23, 65528, 0, 22, 65523, 0, 21, 65523, 0, 17, 65519, 0, 12, 65516, 0, 7, 65514, 0, 2, 65513, 0, 1, 65513, 0, 65532, 65513, 0, 65527, 65514, 0, 65522, 65516, 0, 65518, 65520, 0, 65515, 65525, 0, 65514, 65531, 0, 65514, 1, 0, 65515, 7, 0, 65517, 12, 0, 65517, 13, 0, 65519, 18, 0, 65522, 23, 0, 65526, 26, 0, 65530, 22, 0, 27, 65531, 0, 27, 65527, 0, 26, 65523, 0, 22, 65518, 0, 17, 65514, 0, 11, 65511, 0, 5, 65510, 0, 65535, 65509, 0, 65529, 65509, 0, 65529, 65510, 0, 65523, 65511, 0, 65518, 65515, 0, 65514, 65520, 0, 65511, 65528, 0, 65510, 65534, 0, 65511, 5, 0, 65512, 11, 0, 65514, 17, 0, 65517, 22, 0, 65530, 27, 0, 3, 27, 0, 8, 25, 0, 13, 23, 0, 18, 19, 0, 23, 13, 0, 26, 8, 0, 27, 1, 0, 65532, 12, 0, 65531, 65520, 0, 13, 65534, 0, 8, 16, 0, 11, 2, 0, 23, 65532, 0, 23, 3, 0, 20, 8, 0, 12, 7, 0, 11, 8, 0, 30, 65534, 0)
+}
+
+[node name="Foliage_GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("5_tm4tq")
+cell_size = Vector3(0.5, 2, 0.5)
+cell_center_y = false
+data = {
+"cells": PackedInt32Array(12, 65525, 0, 14, 65526, 0, 22, 65531, 0, 22, 65532, 0, 22, 65534, 0, 19, 65533, 0, 35, 65530, 0, 35, 65531, 0, 40, 1, 0, 40, 2, 0, 40, 3, 0, 39, 3, 0, 39, 4, 0, 38, 4, 0, 38, 5, 0, 37, 5, 0, 37, 6, 0, 36, 6, 0, 36, 7, 0, 36, 8, 0, 36, 9, 0, 37, 9, 0, 37, 10, 0, 37, 11, 0, 65514, 35, 0, 65499, 65528, 0, 65499, 65529, 0, 65500, 0, 0, 65501, 2, 0, 65501, 8, 0, 65499, 7, 0, 65499, 5, 0, 65498, 2, 0, 65502, 65519, 0, 65503, 65519, 0, 65506, 65521, 0, 65506, 65522, 0, 65507, 65523, 0, 65508, 65523, 0, 65512, 65525, 0, 65514, 65523, 0, 65515, 65523, 0, 65520, 65522, 0, 65521, 65522, 0, 65525, 65499, 0, 65526, 65503, 0, 65528, 65503, 0, 65529, 65503, 0, 65529, 65504, 0, 17, 65504, 0, 23, 65506, 0, 23, 65507, 0, 24, 65507, 0, 27, 65506, 0, 28, 65506, 0, 28, 65505, 0, 29, 65505, 0, 29, 65504, 0, 21, 65500, 0, 19, 65516, 0, 65508, 34, 0, 65510, 31, 0, 65526, 37, 0, 65527, 37, 0, 0, 34, 0, 4, 34, 0, 25, 25, 0, 31, 22, 0, 32, 22, 0, 34, 16, 0, 32, 14, 0, 32, 13, 0, 8, 65504, 0, 23, 65509, 0, 24, 65509, 0, 7, 65501, 0, 65513, 65500, 0, 65513, 65501, 0, 65508, 65505, 0, 65502, 65515, 0, 65503, 65515, 0, 13, 65526, 0, 13, 65525, 0)
+}
+
+[node name="campfire" parent="." instance=ExtResource("6_o2l8q")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="campfire"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+light_color = Color(1, 0.603922, 0.0117647, 1)
+omni_range = 15.0
